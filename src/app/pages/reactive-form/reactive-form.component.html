@@ -1,19 +1,19 @@
-<form [formGroup]="form">
-  <div class="grid justify-content-between">
-    <div class="col-6">
-      <label for="name">Name: </label>
-      <input pInputText id="name" type="text" formControlName="name" />
+<p-card header="Reactive form">
+  <form [formGroup]="form">
+    <div class="formgrid grid">
+      <div class="field col">
+        <label for="name">Name: </label>
+        <input pInputText class="inputfield w-full" id="name" type="text" formControlName="name" />
+      </div>
+      <div class="field col">
+        <label for="email">Email: </label>
+        <input pInputText class="inputfield w-full" id="email" type="email" formControlName="email" />
+      </div>
     </div>
-    <div class="col-6">
-      <label for="email">Email: </label>
-      <input pInputText id="email" type="email" formControlName="email" />
-    </div>
-  </div>
-</form>
+  </form>
+  <p-button label="Save" (onClick)="save()"></p-button>
+</p-card>
 
-<p-button label="Save" (onClick)="save()"></p-button>
-
-
-<br><br>
+<br />
 
 {{ form.value | json }}
