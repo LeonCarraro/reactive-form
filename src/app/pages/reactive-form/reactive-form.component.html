@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div class="grid justify-content-between">
+    <div class="col-6">
+      <label for="name">Name: </label>
+      <input pInputText id="name" type="text" formControlName="name" />
+    </div>
+    <div class="col-6">
+      <label for="email">Email: </label>
+      <input pInputText id="email" type="email" formControlName="email" />
+    </div>
+  </div>
+</form>
+
+<p-button label="Save" (onClick)="save()"></p-button>
+
+
+<br><br>
+
+{{ form.value | json }}
