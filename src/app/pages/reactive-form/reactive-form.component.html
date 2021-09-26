@@ -2,18 +2,40 @@
   <form [formGroup]="form">
     <div class="formgrid grid">
       <div class="field col">
-        <label for="name">Name: </label>
-        <input pInputText class="inputfield w-full" id="name" type="text" formControlName="name" />
+        <label for="name">Name: *</label>
+        <input
+          pInputText
+          class="inputfield w-full"
+          [ngClass]="applyErrorStyle('name')"
+          id="name"
+          type="text"
+          aria-describedby="name-help"
+          formControlName="name"
+        />
+        <small id="name-help" class="p-error" *ngIf="showMessageHelp('name')">Enter your name.</small>
       </div>
       <div class="field col">
-        <label for="email">Email: </label>
-        <input pInputText class="inputfield w-full" id="email" type="email" formControlName="email" />
+        <label for="email">Email: *</label>
+        <input
+          pInputText
+          class="inputfield w-full"
+          [ngClass]="applyErrorStyle('email')"
+          id="email"
+          type="email"
+          aria-describedby="email-help"
+          formControlName="email"
+        />
+        <small id="email-help" class="p-error" *ngIf="applyEmailErrorStyle()">Enter a valid email.</small>
       </div>
     </div>
   </form>
-  <p-button label="Save" (onClick)="save()"></p-button>
+
+  <p-button label="Save" icon="pi pi-check" (onClick)="save()"></p-button>
+  <p-button
+    label="Reset"
+    icon="pi pi-times"
+    styleClass="p-button-secondary"
+    [style]="{ 'margin-left': '.5em' }"
+    (onClick)="reset()"
+  ></p-button>
 </p-card>
-
-<br />
-
-{{ form.value | json }}
